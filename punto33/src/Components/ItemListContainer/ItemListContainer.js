@@ -1,14 +1,13 @@
-import React from 'react'
+import ProductCard from "../ProductCard/ProductCard"
 
-export default function ItemListContainer({titulo, text, name}) {
 
-  
-  
-  return (
-    <main className="App-main">
-        <h1>{titulo}</h1>
-        <h2>{text}</h2>
-        <h2>{name}</h2>
-      </main>
-  )
+
+export const ItemListContainer = () => {
+
+   
+    return(
+        <div className="App-main" >
+            <ProductCard name="burger Mac"/>
+        </div>
+    )
 }
