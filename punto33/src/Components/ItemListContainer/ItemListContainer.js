@@ -28,9 +28,9 @@ export const ItemListContainer = () => {
     return(
         <>
             {
-                loading ? 
-                <h2>Cargando...</h2> :
-                <ItemList productos={productos}/>/* <ProductCard name="burger Mac"/> */
+             loading ? 
+             <h2>Cargando...</h2> :
+             <ItemList productos={productos}/>
             }
         </>
     )

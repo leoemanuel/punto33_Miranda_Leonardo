@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemCount from '../ItemCount/ItemCount'
+import ItemDetail from '../ItemDetail/ItemDetail'
 
 const Item = ({prod}) => {
   return (
@@ -11,7 +12,7 @@ const Item = ({prod}) => {
         <p className="card-text">{prod.desc}</p>
         <ItemCount stock = "5"/>
       </div>          
-    </div>
+    </div> 
   )
 }
 

@@ -8,7 +8,9 @@ const ItemList = ({productos}) => {
       <h2>productos</h2>
       <hr/>
       <Row>
-        {productos.map((prod)=><Item prod={prod}/>)}
+        {productos.map((prod)=>
+        <Item prod={prod}/>
+        )}
       </Row>
     </Container>
   )

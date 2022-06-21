@@ -25,7 +25,7 @@ function ItemCount({stock}) {
     <div>
         <h2>{counter}</h2>
         <div>
-        <Button variant="primary"onClick={decrementar} >-</Button>
+        <Button variant="primary m-1" onClick={decrementar} >-</Button>
         <Button variant="primary" onClick={incrementar} disabled={counter > stock-1}>+</Button>
         </div>
         <hr/>

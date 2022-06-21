@@ -3,10 +3,7 @@ import ItemCount from '../ItemCount/ItemCount'
 
 function ProductCard({name}) {
   return (
-
-
       <ItemCount stock = "5"/>
-
   )
 }
 
