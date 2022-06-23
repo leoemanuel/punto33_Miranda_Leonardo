@@ -1,19 +1,19 @@
 import ItemCount from "../ItemCount/ItemCount"
 
-const ItemDetail = ({item}) => {
+
+ export const ItemDetail = ({id,img, name, desc, price, category}) => {
 
 
   return (
-    <div key={item.id} className="card m-3" style={{ width: '18rem' }}>
-      <img src={item.img} alt={item.name}/>
+    <div key={id} className="card m-3" style={{ width: '18rem' }}>
+      <img src={img} alt={name}/>
       <div className="card-body">
-        <h3 className="card-title">{item.name}</h3>
-        <p className="card-text">Precio $: {item.price}</p>
-        <p className="card-text">{item.desc}</p>
+        <h3 className="card-title">{name}</h3>
+        <p className="card-text">Precio $: {price}</p>
+        <p className="card-text">{desc}</p>
         <ItemCount stock = "5"/>
       </div>          
     </div> 
+
   )
 }
-
-export default ItemDetail

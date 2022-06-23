@@ -1,33 +1,41 @@
 import React, {useState, useEffect} from 'react'
-import ItemDetail from '../ItemDetail/ItemDetail'
-import { stock } from '../products/products'
-import elFetch from '../products/elFetch'
+import {ItemDetail} from '../ItemDetail/ItemDetail'
 import { Spinners } from '../Spinners/Spinners'
 import { Container, Row } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
+import { pedirDatos } from '../helpers/pedirdatos'
 
 
 
 export const ItemDetailContainer = () => {
     
+    const [item, setItem] = useState()
     const [spinner, setSpinner] = useState(false)
-    const [item, getItem] = useState({});
+    const [loading, setLoading] = useState(false)
+
+    const {itemId} = useParams()
 
     useEffect(() => {
         setSpinner(true)
-        elFetch(5000, stock)
-        .then((resultado) => {
-            getItem(resultado[0])
-        })
-        .catch((error)=>{
-            console.log(error)
+        setLoading(true)
+
+        pedirDatos()
+            .then(resp =>{
+                setItem( resp.find (prod => prod.id === Number(itemId)))
             })
-        .finally(() => {setSpinner(false)})
+            .finally(()=>{
+                setLoading(false)
+            })
     },[])
+
+
     return(
         <Container >
-            <Row className="justify-content-md-center">
+            <Row className="justify-content-md-center my-5">
                 {
-                 spinner ? <Spinners/> : <ItemDetail item={item}/>
+                 loading 
+                 ? <Spinners/> 
+                 : <ItemDetail {...item}/>
                 }
             </Row>
             

@@ -1,16 +1,27 @@
-import './App.css';
 import { ItemDetailContainer } from './Components/ItemDetailContainer/ItemDetailContainer';
-/* import {ItemListContainer} from './Components/ItemListContainer/ItemListContainer'; */
+import {ItemListContainer} from './Components/ItemListContainer/ItemListContainer';
 import NavBar from './Components/NavBar/NavBar';
+import {BrowserRouter, Router, Route, Routes, Navigate} from 'react-router-dom'
+import { CartView } from './Components/CartView/CartView';
+
 
 
 function App() {
   return (
-    <div className="App">
+    <>
+    <BrowserRouter>
       <NavBar/>
-{/*       <ItemListContainer titulo="Proyecto E-Commerce" text="de comidas rapida" name="Miranda Leonardo"/>
- */}      <ItemDetailContainer/>
-    </div>
+      <Routes>
+        <Route path='/' element={<ItemListContainer />}/>
+        <Route path="/productos/:catId" element={<ItemListContainer />}/>
+        <Route path='/detail/:itemId' element={<ItemDetailContainer/>}/>
+        <Route path='/cart' element={<CartView/>}/>
+        <Route path='*' element={<Navigate to="/"/>}/>
+      </Routes>
+    </BrowserRouter>
+
+    </>
+    
   );
 }
 

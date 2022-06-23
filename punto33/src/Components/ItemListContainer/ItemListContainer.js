@@ -1,9 +1,8 @@
 import Item from "../Item/Item"
 import ItemList from "../ItemList/ItemList"
-import ProductCard from "../ProductCard/ProductCard"
 import {useEffect, useState} from 'react'
 import { pedirDatos } from "../helpers/pedirdatos"
-import { Container } from "react-bootstrap"
+import { useParams } from "react-router-dom"
 
 
 
@@ -12,11 +11,20 @@ export const ItemListContainer = () => {
     const[loading, setLoading] = useState(false)
     const [productos, setProductos] = useState([])
 
+    const { catId } = useParams()
+    console.log(catId)
+
     useEffect(()=>{
         setLoading(true)
         pedirDatos()
             .then((resp)=>{
-                setProductos(resp)
+
+                if(!catId){
+                    setProductos(resp)
+                }else{
+                    setProductos(resp.filter(prod => prod.category === catId))
+                }
+                
             })
         .catch((error)=>{
             console.log(error)
@@ -24,7 +32,7 @@ export const ItemListContainer = () => {
         .finally(()=>{
             setLoading(false)
         })
-    }, [])
+    }, [catId])
     return(
         <>
             {

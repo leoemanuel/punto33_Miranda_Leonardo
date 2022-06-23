@@ -1,19 +1,22 @@
 import React from 'react'
 import {Navbar, Container, Nav} from 'react-bootstrap';
 import { CartWidget } from '../CartWidget/CartWidget';
+import {Link} from 'react-router-dom';
 
 export default function NavBar() {
   return (
     <>
     <Navbar bg="secondary" variant="dark" >
     <Container>
-    <Navbar.Brand href="#home">PUNTO 33</Navbar.Brand>
+    <Link to="/"><h1>Punto 33</h1></Link>
     <Nav className="me-auto">
-      <Nav.Link href="#Home">Home</Nav.Link>
-      <Nav.Link href="#Locales">Locales</Nav.Link>
-      <Nav.Link href="#Menu">Menu</Nav.Link>
+      <ul>
+        <li><Link to="productos/hamburguesas">Hamburguesas</Link></li>
+        <li><Link to="productos/wraps">Wraps</Link></li>
+      </ul>
     </Nav>
-    <CartWidget/>
+    <Link to="cart"><CartWidget/></Link>
+    
     </Container>
     
     </Navbar>
