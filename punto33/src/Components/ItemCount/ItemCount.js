@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 import {Button} from 'react-bootstrap'
 
 
-function ItemCount({stock}) {
-    const [counter, setCounter] = useState(1);
+function ItemCount({stock, setCounter, counter, onAdd}) {
+    
 
     const incrementar = () =>{
         if(stock>counter){
@@ -12,24 +12,22 @@ function ItemCount({stock}) {
     }
 
     const decrementar = () =>{
-        if(counter>1){
+        if(counter>0){
             setCounter(counter -1)
         }
         
     }
-    const respuesta =()=>{
-        alert(`Has seleccionado ${counter}`)
-    }
+
 
   return (
     <div>
-        <h2>{counter}</h2>
-        <div>
+        <div className='d-flex justify-content-center'>
         <Button variant="primary m-1" onClick={decrementar} >-</Button>
-        <Button variant="primary" onClick={incrementar} disabled={counter > stock-1}>+</Button>
+        <p className='mx-2'>{counter}</p>
+        <Button variant="primary m-1" onClick={incrementar} disabled={counter > stock-1}>+</Button>
         </div>
         <hr/>
-        <Button variant="secondary" size="lg" onClick={respuesta}>
+        <Button variant="secondary" size="lg" onClick={onAdd} className="mx-3">
           Agregar al carrito
         </Button>
     </div>

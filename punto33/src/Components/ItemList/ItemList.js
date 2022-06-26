@@ -5,7 +5,7 @@ import Item from '../Item/Item'
 const ItemList = ({productos}) => {
   return (
     <Container className='my-5'>
-      <h2>productos</h2>
+      <h2 className='text-center'>Productos</h2>
       <hr/>
       <Row>
         {productos.map((prod)=>
