@@ -1,22 +1,25 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ItemCount from "../ItemCount/ItemCount"
 import {Link} from 'react-router-dom';
+import { CartContext } from "../CartContext/CartContext";
 
 
  export const ItemDetail = ({id,img, name, desc, price, category}) => {
 
+  const {agregarAlCarrito, isInCart} = useContext(CartContext)
+
   const [counter, setCounter] = useState(0);
-  const [agregado, setAgregado] = useState(false);
+ 
 
   const respuesta =()=>{
     if(counter>0){
-      console.log(`Has seleccionado:`,{
+      agregarAlCarrito({
         id,
         name,
         price,
+        img,
         counter
       })
-      setAgregado(true)
     }
   }
 
@@ -28,7 +31,7 @@ import {Link} from 'react-router-dom';
         <p className="card-text">Precio $: {price}</p>
         <p className="card-text">{desc}</p>
       {
-        !agregado
+        !isInCart(id)
         ?<ItemCount 
           stock = "5" 
           counter={counter} 

@@ -4,7 +4,7 @@ import { CartWidget } from '../CartWidget/CartWidget';
 import {Link} from 'react-router-dom';
 import "./NavBar.css";
 
-export default function NavBar({img}) {
+export default function NavBar() {
   return (
     <>
     <Navbar bg="dark" variant="dark" >
@@ -17,7 +17,6 @@ export default function NavBar({img}) {
       <Link to="productos/milas" className='btn btn-light mx-2'>Milas</Link>
     </Nav>
     <Link to="cart"><CartWidget/></Link>
-    
     </Container>
     
     </Navbar>
