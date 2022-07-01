@@ -6,11 +6,11 @@ import "./CartWidget.css"
 
 export const CartWidget = () => {
 
-  const {totalCantidad} = useContext(CartContext)
+  const {totalCantidad, carrito} = useContext(CartContext)
   console.log(totalCantidad)
 
   return (
-    <div>
+    <div className={carrito.length === 0 ? 'hidden widget': 'widget'}>
         <BsCartPlus className='CartWidget'/>
         <span>{totalCantidad()}</span>
     </div>

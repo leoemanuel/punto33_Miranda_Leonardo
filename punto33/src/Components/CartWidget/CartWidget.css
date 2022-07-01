@@ -5,3 +5,14 @@
 span{
     color: white
 }
+
+.widget{
+    visibility: visible;
+    opacity: 1;
+    transition: all .5s ease-in-out;
+}
+
+.hidden{
+    visibility: hidden;
+    pointer-events: none;
+}
