@@ -59,7 +59,7 @@ export const stock = [
         id: 8,
         name: "Lomo Doble 33",
         price: 1200,
-        desc: "Pan casero, 2 bife de lomo, lechuga, tomate, jamón, huevo, queso, mayo casera, chimi (opcional) + papas!        ",
+        desc: "Pan casero, 2 bife de lomo, lechuga, tomate, jamón, huevo, queso, mayo casera, chimi (opcional) + papas!",
         img: "https://assets.pedix.app/cmcoRjnUw4iqdTE8SUtm/products/renditions/1650389417343_medium.png",
         category: 'lomos'
     },
@@ -75,7 +75,7 @@ export const stock = [
         id: 10,
         name: "Mila Completo",
         price: 850,
-        desc: "Pan casero, mila a elección de 200 gr, lechuga, tomate, jamón, huevo, queso, mayo casera, chimi (opcional) + papas!        ",
+        desc: "Pan casero, mila a elección de 200 gr, lechuga, tomate, jamón, huevo, queso, mayo casera, chimi (opcional) + papas!",
         img: "https://assets.pedix.app/cmcoRjnUw4iqdTE8SUtm/products/renditions/1650389387211_medium.png",
         category: 'milas'
     },

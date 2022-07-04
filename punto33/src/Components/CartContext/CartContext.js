@@ -8,7 +8,6 @@ export const CartContextProvider = ({children}) =>{
 
     const agregarAlCarrito = (item) =>{
         setCarrito([...carrito, item])
-        console.log(carrito)
     }
     const vaciarCarrito=()=>{
         setCarrito([])

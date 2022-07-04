@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react'
 import {ItemDetail} from '../ItemDetail/ItemDetail'
 import { Spinners } from '../Spinners/Spinners'
 import { Container, Row } from 'react-bootstrap'
-import { useParams } from 'react-router-dom'
-import { pedirDatos } from '../helpers/pedirdatos'
+import { useParams } from 'react-router-dom' 
+import { doc, getDoc } from 'firebase/firestore/lite'
+import { db } from "../../firebase/config"
 
 
 
@@ -19,14 +20,19 @@ export const ItemDetailContainer = () => {
         setSpinner(true)
         setLoading(true)
 
-        pedirDatos()
-            .then(resp =>{
-                setItem( resp.find (prod => prod.id === Number(itemId)))
+        const docRef = doc(db, 'productos', itemId)
+        getDoc(docRef)
+            .then((doc)=>{
+                setItem({
+                    id: doc.id,
+                    ...doc.data()
+                })
             })
             .finally(()=>{
                 setLoading(false)
             })
-    },[])
+       
+    },[itemId])
 
 
     return(

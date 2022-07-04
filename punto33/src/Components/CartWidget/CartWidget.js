@@ -7,7 +7,7 @@ import "./CartWidget.css"
 export const CartWidget = () => {
 
   const {totalCantidad, carrito} = useContext(CartContext)
-  console.log(totalCantidad)
+
 
   return (
     <div className={carrito.length === 0 ? 'hidden widget': 'widget'}>

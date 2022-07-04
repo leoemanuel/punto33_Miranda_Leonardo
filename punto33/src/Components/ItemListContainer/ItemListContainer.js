@@ -1,37 +1,37 @@
-import Item from "../Item/Item"
 import ItemList from "../ItemList/ItemList"
 import {useEffect, useState} from 'react'
-import { pedirDatos } from "../helpers/pedirdatos"
+import { collection, getDocs, query, where } from 'firebase/firestore/lite'
 import { useParams } from "react-router-dom"
+import { db } from "../../firebase/config"
 
 
 
 export const ItemListContainer = () => {
-
+    
     const[loading, setLoading] = useState(false)
     const [productos, setProductos] = useState([])
 
     const { catId } = useParams()
-    console.log(catId)
+    
 
     useEffect(()=>{
         setLoading(true)
-        pedirDatos()
-            .then((resp)=>{
+        const productorsRef = collection(db, 'productos')
 
-                if(!catId){
-                    setProductos(resp)
-                }else{
-                    setProductos(resp.filter(prod => prod.category === catId))
-                }
-                
+        const q = catId ? query((productorsRef), where('category', '==', catId)) : productorsRef
+
+        getDocs(q)
+            .then((collection)=>{
+                const items = collection.docs.map((doc)=>({
+                    id: doc.id,
+                    ...doc.data()
+                }))
+                setProductos(items)
             })
-        .catch((error)=>{
-            console.log(error)
+            .finally(()=>{
+                setLoading(false)
             })
-        .finally(()=>{
-            setLoading(false)
-        })
+      
     }, [catId])
     return(
         <>
@@ -43,3 +43,21 @@ export const ItemListContainer = () => {
         </>
     )
 }
+
+/* 
+pedirDatos()
+.then((resp)=>{
+
+    if(!catId){
+        setProductos(resp)
+    }else{
+        setProductos(resp.filter(prod => prod.category === catId))
+    }
+    
+})
+.catch((error)=>{
+console.log(error)
+})
+.finally(()=>{
+setLoading(false)
+}) */
