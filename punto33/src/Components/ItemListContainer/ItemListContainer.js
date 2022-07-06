@@ -44,20 +44,3 @@ export const ItemListContainer = () => {
     )
 }
 
-/* 
-pedirDatos()
-.then((resp)=>{
-
-    if(!catId){
-        setProductos(resp)
-    }else{
-        setProductos(resp.filter(prod => prod.category === catId))
-    }
-    
-})
-.catch((error)=>{
-console.log(error)
-})
-.finally(()=>{
-setLoading(false)
-}) */
