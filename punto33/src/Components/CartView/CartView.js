@@ -8,13 +8,13 @@ export const CartView = () => {
   const {carrito, vaciarCarrito, removerDelCarrito, totalCompra} = useContext(CartContext)
 
   return (
-    <div className='container my-5'>
+    <div  className='container my-5'>
         <h2>Cart View</h2>
         <hr/>
         <section className="card m-3" style={{ width: '12rem' }}>
           {
             carrito.map((prod)=>(
-              <div className="card-body">
+              <div key={prod.id} className="card-body">
                 <h3 className="card-title">{prod.name}</h3>
                 <p className="card-text">Precio: ${prod.price}</p>
                 <p className="card-text">Cantidad: {prod.counter}</p>
