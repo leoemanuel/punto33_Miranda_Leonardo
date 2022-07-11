@@ -5,7 +5,8 @@ export const stock = [
         price: 850,
         desc: "Pan de papa, carne smasheada, queso cheddar, lechuga, tomate, rodajas de cebolla y salsa especial + papas ondeadas",
         img: "https://assets.pedix.app/cmcoRjnUw4iqdTE8SUtm/products/renditions/1640963686738_medium.png",
-        category: 'hamburguesas'
+        category: 'hamburguesas',
+        stock: 100
     },
     {
         id: 2,
@@ -13,7 +14,8 @@ export const stock = [
         price: 950,
         desc: "3 capas de pan de papa, carne smasheada, queso cheddar, cebolla cortada en brunoise, lechuga, pepinillos y salsa especial + papas ondeadas! 🍔💚",
         img: "https://assets.pedix.app/cmcoRjnUw4iqdTE8SUtm/products/renditions/1620396772307_medium.png",
-        category: 'hamburguesas'
+        category: 'hamburguesas',
+        stock: 100
     },
     {
         id: 3,
@@ -21,7 +23,8 @@ export const stock = [
         price: 800,
         desc: "Personalizá tu Burger eligiendo tamaño (medallones), toppings y salsas a elección! Con papas ondeadas incluidas 💚🍟🍔",
         img: "https://assets.pedix.app/cmcoRjnUw4iqdTE8SUtm/products/renditions/1606780059222_medium.png",
-        category: 'hamburguesas'
+        category: 'hamburguesas',
+        stock: 100
     },
     {
         id: 4,
@@ -29,7 +32,8 @@ export const stock = [
         price: 900,
         desc: "Bife de Lomo cortado en tiras , Lechuga, Tomate, Queso Cheddar , Panceta , Cebolla morada , Mayo Casera + Papas",
         img: "https://assets.pedix.app/cmcoRjnUw4iqdTE8SUtm/products/renditions/1620400448738_medium.png",
-        category: 'wraps'
+        category: 'wraps',
+        stock: 100
     },
     {
         id: 5,
@@ -37,7 +41,8 @@ export const stock = [
         price: 850,
         desc: "Pollo Crispy en tiras, Queso Mozarella , Morrón en conserva , Cebolla , Lechuga , Tomate y Mayo Casera + Papas",
         img: "https://assets.pedix.app/cmcoRjnUw4iqdTE8SUtm/products/renditions/1620400277034_medium.png",
-        category: 'wraps'
+        category: 'wraps',
+        stock: 100
     },
     {
         id: 6,
@@ -45,7 +50,8 @@ export const stock = [
         price: 950,
         desc: "Pan casero, bife de lomo, lechuga, tomate, jamón, huevo, queso, mayo casera, chimi (opcional) + papas !",
         img: "https://assets.pedix.app/cmcoRjnUw4iqdTE8SUtm/products/renditions/1650389417723_medium.png",
-        category: 'lomos'
+        category: 'lomos',
+        stock: 100
     },
     {
         id: 7,
@@ -53,7 +59,8 @@ export const stock = [
         price: 1000,
         desc: "Pan casero, bife de lomo, lechuga, tomate, bacon, triple cheddar, cebolla morada y mayo casera + papas !",
         img: "https://assets.pedix.app/cmcoRjnUw4iqdTE8SUtm/products/renditions/1650389413497_medium.png",
-        category: 'lomos'
+        category: 'lomos',
+        stock: 100
     },
     {
         id: 8,
@@ -61,7 +68,8 @@ export const stock = [
         price: 1200,
         desc: "Pan casero, 2 bife de lomo, lechuga, tomate, jamón, huevo, queso, mayo casera, chimi (opcional) + papas!",
         img: "https://assets.pedix.app/cmcoRjnUw4iqdTE8SUtm/products/renditions/1650389417343_medium.png",
-        category: 'lomos'
+        category: 'lomos',
+        stock: 100
     },
     {
         id: 9,
@@ -69,7 +77,8 @@ export const stock = [
         price: 900,
         desc: "Pan casero, bife de lomo, lechuga, tomate, jamón, huevo, queso, mayo casera, chimi (opcional), ajíes y morrones en conserva + papas!        ",
         img: "https://assets.pedix.app/cmcoRjnUw4iqdTE8SUtm/products/renditions/1650389388392_medium.png",
-        category: 'milas'
+        category: 'milas',
+        stock: 100
     },
     {
         id: 10,
@@ -77,6 +86,7 @@ export const stock = [
         price: 850,
         desc: "Pan casero, mila a elección de 200 gr, lechuga, tomate, jamón, huevo, queso, mayo casera, chimi (opcional) + papas!",
         img: "https://assets.pedix.app/cmcoRjnUw4iqdTE8SUtm/products/renditions/1650389387211_medium.png",
-        category: 'milas'
+        category: 'milas',
+        stock: 100
     },
 ]

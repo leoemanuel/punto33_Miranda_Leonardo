@@ -2,12 +2,14 @@ import { useContext, useState } from "react"
 import { CartContext } from "../CartContext/CartContext"
 import { validarDatos } from "../../helpers/validarDatos"
 import { Navigate } from "react-router-dom"
-import { collection, Timestamp, addDoc } from "firebase/firestore/lite"
+import { collection, Timestamp, getDocs, writeBatch, query, where, documentId, addDoc } from "firebase/firestore/lite"
 import { db } from "../../firebase/config"
+import { async } from "@firebase/util"
+import Swal from "sweetalert2"
 
 export const Checkout = () => {
 
-    const {carrito, totalCompra} = useContext(CartContext)
+    const {carrito, totalCompra, vaciarCarrito} = useContext(CartContext)
 
     const [values, setValues] = useState({
         nombre: '',
@@ -22,7 +24,7 @@ export const Checkout = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         if(!validarDatos(values)){return}
         const orden = {
@@ -31,11 +33,46 @@ export const Checkout = () => {
             total: totalCompra(),
             date: Timestamp.fromDate(new Date())
         }
+
+        const batch = writeBatch(db)
         const orderRef = collection(db, "orders")
-        addDoc(orderRef, orden)
+        const productosRef = collection(db, "productos")
+        const q = query(productosRef, where(documentId(), 'in', carrito.map(el => el.id)))
+
+        const outOfStock = []
+        const productos = await getDocs(q)
+
+        productos.docs.forEach((doc)=>{
+            const itemToUpdate = carrito.find((prod)=> prod.id === doc.id)
+
+            if(doc.data().stock >= itemToUpdate.counter){
+                batch.update(doc.ref, {
+                    stock: doc.data().stock - itemToUpdate.counter
+                })
+            } else {
+                outOfStock.push(itemToUpdate)
+            }
+        })
+
+        if(outOfStock.length===0){
+            addDoc(orderRef, orden)
             .then((res)=>{
-                console.log(res.id)
+                batch.commit()
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Su orden ha sido registrada',
+                    text: `Su numero de orden es ${res.id}`
+                })
+                vaciarCarrito()
+            }) 
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'No hay stock de los siguientes productos: ',
+                text: outOfStock.map(el=> el.name).join(', ')
             })
+        }
     }
 
     return(

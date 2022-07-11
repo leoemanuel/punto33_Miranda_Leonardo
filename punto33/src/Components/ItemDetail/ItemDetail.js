@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import { CartContext } from "../CartContext/CartContext";
 
 
- export const ItemDetail = ({id,img, name, desc, price, category}) => {
+ export const ItemDetail = ({id,img, name, desc, price, category, stock}) => {
 
   const {agregarAlCarrito, isInCart} = useContext(CartContext)
 
@@ -33,7 +33,7 @@ import { CartContext } from "../CartContext/CartContext";
       {
         !isInCart(id)
         ?<ItemCount 
-          stock = "5" 
+          stock = {stock}
           counter={counter} 
           setCounter={setCounter}
           onAdd={respuesta}/>
